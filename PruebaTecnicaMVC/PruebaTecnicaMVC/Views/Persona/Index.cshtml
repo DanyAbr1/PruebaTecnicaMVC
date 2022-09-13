@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PruebaTecnicaMVC.Models.Persona>
+
+@{
+    ViewBag.Title = "Personas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Personas</h2>                 
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-success" href="@Url.Action("CrearNuevo","Persona")">Crea Nuevo</a>                
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Edad</th>
+                                <th>Sexo</th>
+                                <th>Email</th>
+                                <th style="width:150px"></th>
+                            </tr> 
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Nombre</td>
+                                    <td>@item.Edad</td>
+                                    <td>@item.Sexo</td>
+                                    <td>@item.Email</td>
+                                    <td>
+                                        <a class="btn btn-info" href="@Url.Action("Editar","Persona",new {id = item.Id})">Editar</a>
+                                        <a class="btn btn-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

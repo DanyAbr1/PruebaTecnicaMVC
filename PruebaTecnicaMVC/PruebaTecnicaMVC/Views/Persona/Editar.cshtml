@@ -1,0 +1,54 @@
+﻿@model PruebaTecnicaMVC.Models.Persona
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Editando persona</h2>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Action("Actualizar", "Persona")" method="post">
+
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" disabled="disabled" class="form-control" name="nombre" value="@Html.DisplayTextFor(m => m.Id)" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" name="nombre" value="@Html.DisplayTextFor(m => m.Nombre)" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Edad</label>
+                        <input type="number" class="form-control" name="edad" value="@Html.DisplayTextFor(m => m.Edad)" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="form-control" name="sexo" value="@Html.DisplayTextFor(m => m.Sexo)">
+                            <option>Seleccione uno</option>
+                            <option value="1">Masculino</option>1
+                            <option value="2">Femenino</option>
+                            <option value="3">No especificar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" value="@Html.DisplayTextFor(m => m.Email)" />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Index","Persona")">Atras</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

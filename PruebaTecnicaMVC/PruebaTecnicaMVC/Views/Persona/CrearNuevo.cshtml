@@ -1,0 +1,50 @@
+﻿@model PruebaTecnicaMVC.Models.Persona
+
+@{
+    ViewBag.Title = "Crear Nuevo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Crear Nuevo</h2>
+
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h2>Creando persona</h2>
+            </div>
+            <div class="panel-body">
+                <form action="@Url.Action("AgregarEnLista","Persona")" method="post">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" name="nombre" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Edad</label>
+                        <input type="number" class="form-control" name="edad" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <select class="form-control" name="sexo">
+                            <option>Seleccione uno</option>
+                            <option value="1">Masculino</option>
+                            <option value="2">Femenino</option>
+                            <option value="3">No especificar</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" />
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Registrar</button>
+                    <a class="btn btn-warning" href="@Url.Action("Index","Persona")">Atras</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
