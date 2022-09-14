@@ -8,33 +8,64 @@ namespace PruebaTecnicaMVC.Controllers
     public class PersonaController : Controller
     {
         private static List<Persona> _listaPersona = new List<Persona>();
-        // GET: Persona 
+        
+        /// <summary>
+        /// Es la pagina principal de la aplicacion de personas
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
-            return View(_listaPersona);
+            return View(_listaPersona.OrderBy(o => o.Id));
         }
 
+        /// <summary>
+        /// Es el metodo que llama la pagina de crear nuevo
+        /// </summary>
+        /// <returns></returns>
         public ActionResult CrearNuevo()
         {            
             return View();
         }
 
+        /// <summary>
+        /// Este metodo se utiliza para agregar personas a la lista
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult AgregarEnLista(Persona vm)
         {
-            vm.Id += 1;
+
+            if (_listaPersona.Count > 0)
+            {
+                var item = _listaPersona.Max(o => o.Id);
+                vm.Id = item + 1;
+            }
+            else
+            {
+                vm.Id = 1;
+            }
 
             _listaPersona.Add(vm);
 
             return RedirectToAction("Index","Persona");
         }
 
+        /// <summary>
+        /// Este metodo se utiliza para llamar la pagina de edicion
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Editar(int? id)
         {                    
             return View(_listaPersona.FirstOrDefault(o => o.Id == id));
         }
 
-
+        /// <summary>
+        /// Este Metodo es el que se utiliza para actulizar una persona de la lista
+        /// </summary>
+        /// <param name="vm"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Actualizar(Persona vm)
         {
@@ -48,5 +79,20 @@ namespace PruebaTecnicaMVC.Controllers
 
             return RedirectToAction("Index", "Persona");
         }
+
+        /// <summary>
+        /// Este metodo se utiliza para borrar un item de la lista enviandole como parametro el id de la persona 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult Borrar(int? id)
+        {
+            var item  = _listaPersona.FirstOrDefault(o => o.Id == id);
+            _listaPersona.Remove(item);
+
+            return RedirectToAction("Index", "Persona");
+        }
+
+
     }
 }

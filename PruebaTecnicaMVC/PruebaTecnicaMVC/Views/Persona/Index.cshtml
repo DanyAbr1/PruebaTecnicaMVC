@@ -31,11 +31,23 @@
                                 <tr>
                                     <td>@item.Nombre</td>
                                     <td>@item.Edad</td>
-                                    <td>@item.Sexo</td>
+                                    @if (item.Sexo == 1)
+                                    {
+                                        <td>Masculino</td>
+
+                                    }
+                                    else if (item.Sexo == 2)
+                                    {
+                                        <td>Femenino</td>
+                                    }
+                                    else if (item.Sexo == 3)
+                                    {
+                                        <td>No especificado</td>
+                                    }
                                     <td>@item.Email</td>
                                     <td>
                                         <a class="btn btn-info" href="@Url.Action("Editar","Persona",new {id = item.Id})">Editar</a>
-                                        <a class="btn btn-danger">Borrar</a>
+                                        <a class="btn btn-danger" href="@Url.Action("Borrar","Persona",new {id = item.Id})">Borrar</a>
                                     </td>
                                 </tr>
                             }

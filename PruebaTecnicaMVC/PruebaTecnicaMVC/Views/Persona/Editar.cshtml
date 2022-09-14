@@ -14,11 +14,7 @@
             <div class="panel-body">
                 <form action="@Url.Action("Actualizar", "Persona")" method="post">
 
-                    <div class="form-group">
-                        <label>Id</label>
-                        <input type="text" disabled="disabled" class="form-control" name="nombre" value="@Html.DisplayTextFor(m => m.Id)" />
-                    </div>
-
+                    <input type="hidden" class="form-control" name="id" value="@Html.DisplayTextFor(m => m.Id)" />
                     <div class="form-group">
                         <label>Nombre</label>
                         <input type="text" class="form-control" name="nombre" value="@Html.DisplayTextFor(m => m.Nombre)" />
@@ -33,11 +29,54 @@
                         <label>Sexo</label>
                         <select class="form-control" name="sexo" value="@Html.DisplayTextFor(m => m.Sexo)">
                             <option>Seleccione uno</option>
-                            <option value="1">Masculino</option>1
-                            <option value="2">Femenino</option>
-                            <option value="3">No especificar</option>
+                            @if (Model != null)
+                            {
+                                if (Model.Sexo == 1)
+                                {
+                                    <option selected="selected" value="1">Masculino</option>
+
+                                }
+                                else
+                                {
+                                    <option value="1">Masculino</option>
+
+                                }
+
+                                if (Model.Sexo == 2)
+                                {
+                                    <option selected="selected" value="2">Femenino</option>
+
+                                }
+                                else
+                                {
+                                    <option value="2">Femenino</option>
+
+                                }
+
+                                if (Model.Sexo == 3)
+                                {
+                                    <option selected="selected" value="3">No especificado</option>
+
+                                }
+                                else
+                                {
+                                    <option value="3">No especificado</option>
+
+                                }
+                            }
                         </select>
                     </div>
+
+
+                    @*<div class="dropdown-toggle">
+            @Html.DropDownList("Sexo", new List<SelectListItem>
+            {
+               new SelectListItem {Text = "Masculino", Value = "1"},
+               new SelectListItem {Text = "Femenino", Value = "2"},
+               new SelectListItem {Text = "No especificado", Value = "3"}
+
+            }, "Seleccione uno")
+        </div>*@
 
                     <div class="form-group">
                         <label>Email</label>
@@ -45,6 +84,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success">Guardar</button>
+
                     <a class="btn btn-warning" href="@Url.Action("Index","Persona")">Atras</a>
                 </form>
             </div>
