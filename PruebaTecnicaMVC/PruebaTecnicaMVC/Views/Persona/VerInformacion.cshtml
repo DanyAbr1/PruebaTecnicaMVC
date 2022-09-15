@@ -1,0 +1,63 @@
+﻿@model PruebaTecnicaMVC.Models.Persona
+
+@{
+    ViewBag.Title = "VerInformacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+
+    <h2>Detalle</h2>
+
+  
+</div>
+
+<div>
+    @if (Model != null)
+    {
+        <div class="info">
+            <div class="row">
+                <label>Nombre: </label>
+                <span>@Model.Nombre</span>
+            </div>
+
+            <div class="row">
+                <label>Edad: </label>
+                <span>@Model.Edad</span>
+            </div>
+
+            <div class="row">
+                <label>Sexo: </label>
+                @if (Model.Sexo == 1)
+                {
+                    <span>Masculino</span>
+
+                }
+                else if (Model.Sexo == 2)
+                {
+                    <span>Femenino</span>
+                }
+                else if (Model.Sexo == 3)
+                {
+                    <span>No especificado</span>
+                }
+            </div>
+
+            <div class="row">
+                <label>Email: </label>
+                <span>@Model.Email</span>
+            </div>
+
+            <div class="row">
+                <label>Cerveza: </label>
+                <span>@Model.Cerveza</span>
+            </div>
+
+            @Html.ActionLink("Ir atras","Index","Persona")
+        </div>
+    }
+
+
+</div>
+

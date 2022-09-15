@@ -16,5 +16,6 @@ namespace PruebaTecnicaMVC.Models
         public int Edad { get; set; }
         public int Sexo { get; set; }
         public string Email { get; set; }
+        public string Cerveza { get; set; }
     }
 }

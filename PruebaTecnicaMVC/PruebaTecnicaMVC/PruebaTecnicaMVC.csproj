@@ -163,6 +163,7 @@
     <Content Include="Views\Persona\Index.cshtml" />
     <Content Include="Views\Persona\CrearNuevo.cshtml" />
     <Content Include="Views\Persona\Editar.cshtml" />
+    <Content Include="Views\Persona\VerInformacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

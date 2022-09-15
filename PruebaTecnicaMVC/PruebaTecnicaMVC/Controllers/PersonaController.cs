@@ -8,14 +8,22 @@ namespace PruebaTecnicaMVC.Controllers
     public class PersonaController : Controller
     {
         private static List<Persona> _listaPersona = new List<Persona>();
-        
+
         /// <summary>
         /// Es la pagina principal de la aplicacion de personas
         /// </summary>
         /// <returns></returns>
+        /// 
+        public static bool MostrarRenglonCerveza;
         public ActionResult Index()
         {
+            MostrarRenglonCerveza = false;
             return View(_listaPersona.OrderBy(o => o.Id));
+        }
+
+        public ActionResult VerInformacion(int? id)
+        {
+            return View(_listaPersona.FirstOrDefault(o => o.Id == id));
         }
 
         /// <summary>
@@ -34,8 +42,7 @@ namespace PruebaTecnicaMVC.Controllers
         /// <returns></returns>
         [HttpPost]
         public ActionResult AgregarEnLista(Persona vm)
-        {
-
+        {            
             if (_listaPersona.Count > 0)
             {
                 var item = _listaPersona.Max(o => o.Id);
@@ -47,7 +54,6 @@ namespace PruebaTecnicaMVC.Controllers
             }
 
             _listaPersona.Add(vm);
-
             return RedirectToAction("Index","Persona");
         }
 
@@ -93,6 +99,15 @@ namespace PruebaTecnicaMVC.Controllers
             return RedirectToAction("Index", "Persona");
         }
 
+
+
+        public void OnBblurEdad(int edad)
+        {
+            if (edad > 30)
+            {
+                MostrarRenglonCerveza = true;
+            }
+        }
 
     }
 }

@@ -29,7 +29,12 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.Nombre</td>
+                                  
+                                    <td> 
+                                        <a class="btn-link" href="@Url.Action("VerInformacion","Persona",new {id = item.Id})">
+                                            @item.Nombre
+                                        </a>
+                                    </td>
                                     <td>@item.Edad</td>
                                     @if (item.Sexo == 1)
                                     {
