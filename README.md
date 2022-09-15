@@ -12,3 +12,6 @@ uno de los números de ese arreglo, ¿cómo lo encontraría?
 de lo contrario el numero removido seria el valor de mi variable.
 
 
+[X] Prueba Teorica
+[x] Prueba Tecnica
+[o] Extras (Solo falto la condicion de la cerveza, no la pude realizar)
